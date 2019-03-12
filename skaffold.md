@@ -22,7 +22,7 @@ Skaffold can be used to deploy multiple microservices at once. You can reference
 
 Skaffold makes it easy to build, push, and deploy using a variety of tools by means of a **pluggable architecture** and also allows you to easily switch between these configurations with the **profiles** feature. Skaffold gives you options to use the tool you prefer in each stage of the build, push, deploy process. There are many build options (Dockerfile locally, Dockerfile in-cluster with Kaniko, Dockerfile on the cloud, Jib Maven/Gradle locally, etc.), deploy options (`kubectl`, Helm, Kustomize), and many optional image tag policies. This pluggability makes it possible to match the tools used in your production deployment pipeline. 
 
-The profiles feature makes the pluggable architecture of Skaffold even more useful. A profile is a set of settings stored in `skaffold.yaml` that overrides the build, test and deploy sections of your current configuration. Profiles enable you to efficiently switch tools as you see fit depending on your context. You can activate a configration with `skaffold run -p [PROFILE]`. For example, you could create one profile called `local` development, which uses the local Docker daemon to build images and `kubectl` to deploy them to a local cluster. After you finalize your design, you could switch to the `production` profile using Jib with Maven for your build tool and `helm` to deploy to your cluster. 
+The profiles feature makes the pluggable architecture of Skaffold even more useful. A profile is a set of settings stored in `skaffold.yaml` that overrides the build, test and deploy sections of your current configuration. Profiles enable you to efficiently switch tools as you see fit depending on your context. You can activate a configuration with `skaffold run -p [PROFILE]`. For example, you could create one profile called `local` development, which uses the local Docker daemon to build images and `kubectl` to deploy them to a local cluster. After you finalize your design, you could switch to the `production` profile using Jib with Maven for your build tool and `helm` to deploy to your cluster. 
 
 
 
@@ -80,7 +80,7 @@ getting-started                          1/1     Running   0          5s
 
 #### Connect to the Application 
 
-Skaffold will automatically port foward an application based on the configuration of your pod spec. This will open your browser and connect to the "OneUp" application based on the port forward indicated in the `Tiltfile`. In this example the browser will open to `http://localhost:8100`.  
+Skaffold will automatically port forward an application based on the configuration of your pod spec. This will open your browser and connect to the "OneUp" application based on the port forward indicated in the `Tiltfile`. In this example the browser will open to `http://localhost:8100`.  
 
 #### Modify the Application 
 
