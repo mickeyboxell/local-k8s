@@ -12,7 +12,7 @@ I am exploring a series of tools to simplify the "inner loop" of the container n
 
 ### Definition 
 
-[Draft](https://github.com/Azure/draft) simplifies the process for developers to get started deploying their appliction to Kubernetes. It does so by creating boilerplate for a variety of programming languages and enabling a workflow to build, push, and deploy your application to a Kubernetes cluster. 
+[Draft](https://github.com/Azure/draft) simplifies the process for developers to get started deploying their application to Kubernetes. It does so by creating boilerplate for a variety of programming languages and enabling a workflow to build, push, and deploy your application to a Kubernetes cluster. 
 
 
 
@@ -22,7 +22,7 @@ Draft differentiates itself by means of its low barrier to entry. The majority o
 
 `draft create` is used to detect the language of the application you are developing and generate the artifacts needed to deploy the application to your cluster. This is done via **Draft packs**, which provide a Dockerfile and Helm Chart specific to your chosen language. There are examples for most popular programming languages. This saves you time that would otherwise be spent writing a Dockerfile or Kubernetes manifest from scratch. `draft up` reads your configuration and takes care of the build, push, and deployment steps for you. 
 
-Unlike Skaffold and Tilt, Draft does not continously watch for application changes. You will need to run `draft up` every time you would like the application to be updated. At this time Draft only supports a single Dockerfile and chart in the root directory, which can make it a challenge to simultaneously deploy miultiple microservices using Draft. Draft relies on Helm, a package management tool for Kubernetes. Helm is a common tool used to deploy artifacts to a Kubernetes cluster. This can be beneficial if it happens to be the same tool used to deploy to your production cluster. It would be nice to have the flexibility of Skaffold's pluggable architecture, which provides you with the option to deploy with other tools. Unlike using `kubectl`, Helm has to be installed separately and in many cases requires the configuration of RBAC. 
+Unlike Skaffold and Tilt, Draft does not continuously watch for application changes. You will need to run `draft up` every time you would like the application to be updated. At this time Draft only supports a single Dockerfile and chart in the root directory, which can make it a challenge to simultaneously deploy multiple microservices using Draft. Draft relies on Helm, a package management tool for Kubernetes. Helm is a common tool used to deploy artifacts to a Kubernetes cluster. This can be beneficial if it happens to be the same tool used to deploy to your production cluster. It would be nice to have the flexibility of Skaffold's pluggable architecture, which provides you with the option to deploy with other tools. Unlike using `kubectl`, Helm has to be installed separately and in many cases requires the configuration of RBAC. 
 
 
 
@@ -59,7 +59,7 @@ The installation will create a ` /.draft` folder in your root directory to store
 Clone the [Draft repository](https://github.com/Azure/draft) on GitHub and change to the `/examples/example-go` directory. In order to deploy the `main.go` application to a Kubernetes cluster, we will need a Dockerfile, Helm chart, and draft.toml. 
 
 - The `Dockerfile` starts from default go image will install the dependencies in `requirements.txt` and copy the current directory into `/usr/src/app`. 
-- The Helm chart includes the .yaml file that will be used to deploy your application to a Kubernetes cluster. The `charts/` and `Dockerfile` assets created by Draft default to a basic Go configuration. 
+- The Helm chart includes the manifest file that will be used to deploy your application to a Kubernetes cluster. The `charts/` and `Dockerfile` assets created by Draft default to a basic Go configuration. 
 - The `draft.toml` file contains basic configuration details about the application like the name, the repository, which namespace it will be deployed to, and whether to deploy the application automatically when local files change.
 
 These artifacts can easily be created by running `draft create`. Draft detects the language of the application in the directory, in this case Go:  `--> Draft detected Go (100.000000%)` and creates the scaffolding accordingly:
