@@ -6,7 +6,7 @@
 
 ### Introduction 
 
-I am exploring a series of tools to simplify the "inner loop" of the container native development workflow: the period of time during which you are hacking on code, but have not yet pushed to a version control system. These tools, [**Draft**](draft.md), [**Skaffold**](skaffold.md), and [**Tilt**](tilt.md) each take a different approach to the task at hand.  Each tool can be used to build an image of your project, push the image to a registry service of your choice, and deploy the image onto a Kubernetes cluster. Adopting these tools will free up your time and allow you to focus on writing code. You can learn more about the motivation behind this series in my [first post](intro). 
+I am exploring a series of tools to simplify the "inner loop" of the container native development workflow: the period of time during which you are hacking on code, but have not yet pushed to a version control system. These tools, [**Draft**](draft.md), [**Skaffold**](skaffold.md), and [**Tilt**](tilt.md) each take a different approach to the task at hand.  Each tool can be used to build an image of your project, push the image to a registry service of your choice, and deploy the image onto a Kubernetes cluster. Adopting these tools will free up your time and allow you to focus on writing code. You can learn more about the motivation behind this series in my [first post](intro.md). 
 
 
 
