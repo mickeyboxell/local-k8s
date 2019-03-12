@@ -1,6 +1,6 @@
 # Local Kubernetes Development Tools 
 
-* [Intro](intro.md]
+* [Intro](intro.md)
 * [Draft](draft.md)
 * [Skaffold](skaffold.md)
 * [Tilt](tilt.md) 
