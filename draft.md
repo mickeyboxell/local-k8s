@@ -6,7 +6,7 @@
 
 ### Introduction 
 
-I am exploring a series of tools to simplify the "inner loop" of the container native development workflow: the period of time during which you are hacking on code, but have not yet pushed to a version control system. These tools, [**Draft**](draft.md), [**Skaffold**](skaffold.md), and [**Tilt**](tilt.md) each take a different approach to the task at hand.  Each tool can be used to build an image of your project, push the image to a registry service of your choice, and deploy the image onto a Kubernetes cluster. Adopting these tools will free up your time and allow you to focus on writing code. You can learn more about the motivation behind this series in my [first post](intro.md). 
+I am exploring a series of tools to simplify the inner loop of the container native development workflow: the period of time during which you are writing code, but have not yet pushed it to a version control system. These tools, [**Draft**](draft.md), [**Skaffold**](skaffold.md), and [**Tilt**](tilt.md) each take a different approach to the task at hand.  Each tool can be used to build an image of your project, push the image to a registry service of your choice, and deploy the image onto a Kubernetes cluster. Adopting these tools will free up your time and allow you to focus on writing code. You can learn more about the motivation behind this series in my [first post](intro.md). 
 
 
 
@@ -58,9 +58,9 @@ The installation will create a ` /.draft` folder in your root directory to store
 
 Clone the [Draft repository](https://github.com/Azure/draft) on GitHub and change to the `/examples/example-go` directory. In order to deploy the `main.go` application to a Kubernetes cluster, we will need a Dockerfile, Helm chart, and draft.toml. 
 
-- The `Dockerfile` starts from default go image will install the dependencies in `requirements.txt` and copy the current directory into `/usr/src/app`. 
-- The Helm chart includes the manifest file that will be used to deploy your application to a Kubernetes cluster. The `charts/` and `Dockerfile` assets created by Draft default to a basic Go configuration. 
-- The `draft.toml` file contains basic configuration details about the application like the name, the repository, which namespace it will be deployed to, and whether to deploy the application automatically when local files change.
+- The `Dockerfile` starts with a default Go image. It will install the dependencies in `requirements.txt` and copy the current directory into `/usr/src/app`. 
+- The Helm chart includes the manifest file used to deploy your application to a Kubernetes cluster. The `/charts` and `Dockerfile` assets created by Draft default to a basic Go configuration. 
+- The `draft.toml` file contains basic configuration details about the application: the name, repository, Kubernetes namespace, and whether to deploy the application automatically when local files change.
 
 These artifacts can easily be created by running `draft create`. Draft detects the language of the application in the directory, in this case Go:  `--> Draft detected Go (100.000000%)` and creates the scaffolding accordingly:
 
@@ -69,7 +69,7 @@ $ ls
 Dockerfile	charts		draft.toml	glide.yaml	main.go
 ```
 
-After exploring the artifacts created by Draft, you will need to configure your image registry. Run `eval $(minikube docker-env)` to allow Draft to build images directly using Minikube's Docker daemon which lets you skip having to set up a remote/external container registry.
+After exploring the artifacts created by Draft, you have to the option to configure your image registry. Run `eval $(minikube docker-env)` to allow Draft to build images directly using Minikube's Docker daemon which lets you skip having to set up a remote/external container registry. If you do not configure an image registry, Draft will bypass this step: `WARNING: no registry has been set, therefore Draft will not push to a container registry.`
 
 *How can I configure this to be used with Docker for Desktop? It worked for me out of the box the second time around, but I'm sure I did something the first time to enable this. I have this in my notes: `docker run -d -p 5000:5000 --name registry registry:2` `draft config set registry localhost:5000`*
 
@@ -128,16 +128,16 @@ app 'example-go' deleted
 
 ### OKE/OCIR Configuration 
 
-Draft can also be used with hosted Kubernetes solutions. My example will use [Oracle Oracle Container Engine for Kubernetes (OKE)](https://docs.cloud.oracle.com/iaas/Content/ContEng/Concepts/contengoverview.htm) as the Kubernetes cluster and [Oracle Cloud Infrastructure Registry (OCIR)](https://docs.cloud.oracle.com/iaas/Content/Registry/Concepts/registryoverview.htm) as the container image registry. Similar steps can be followed to configure Draft with other Kubernetes cluster and registry services. 
+Draft can also be used with hosted Kubernetes solutions. My example will use [Oracle Container Engine for Kubernetes (OKE)](https://docs.cloud.oracle.com/iaas/Content/ContEng/Concepts/contengoverview.htm) as the Kubernetes cluster and [Oracle Cloud Infrastructure Registry (OCIR)](https://docs.cloud.oracle.com/iaas/Content/Registry/Concepts/registryoverview.htm) as the container image registry. Similar steps can be followed to configure Draft with other Kubernetes cluster and registry services. 
 
 #### Registry Configuration 
 
-In order to use a cloud registry service you will need to set the registry in Draft with the `draft config set registry` command. To set OCIR as your registry you will need to provide the server URL of the registry. Run: `draft config set registry <region code>.ocir.io/<tenancy name>/<repo name>/<image name>:<tag>` 
+To use a cloud registry service you will need to set the registry in Draft with the `draft config set registry` command. To set OCIR as your registry you will need to provide the server URL of the registry. Run: `draft config set registry <region code>.ocir.io/<tenancy name>/<repo name>/<image name>:<tag>` 
 
 - `<region-code>` is one of `fra`, `iad`, `lhr`, or `phx`.
 - `ocir.io` is the Oracle Cloud Infrastructure Registry name.
 - `<tenancy-name>` is the name of the tenancy that owns the repository to which you want to push the image, for example `acme-dev`. Note that your user must have access to the tenancy.
-- `<repo-name>`, if specified, is the name of a repository to which you want to push the image ,for example, `project01`. Note that specifying a repository is optional. If you don't specify a repository name, the name of the image is used as the repository name in Oracle Cloud Infrastructure Registry.
+- `<repo-name>`, if specified, is the name of a repository to which you want to push the image. For example, `project01`. Note that specifying a repository is optional. If you choose specify a repository name, the name of the image is used as the repository name in Oracle Cloud Infrastructure Registry.
 - `<image-name>` is the name you want to give the image in Oracle Cloud Infrastructure Registry, for example, `helloworld`.
 - `<tag>` is an image tag you want to give the image in Oracle Cloud Infrastructure Registry, for example, `latest`.
 

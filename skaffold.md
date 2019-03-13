@@ -6,23 +6,23 @@
 
 ### Introduction 
 
-I am exploring a series of tools to simplify the "inner loop" of the container native development workflow: the period of time during which you are hacking on code, but have not yet pushed to a version control system. These tools, [**Draft**](draft.md), [**Skaffold**](skaffold.md), and [**Tilt**](tilt.md) each take a different approach to the task at hand.  Each tool can be used to build an image of your project, push the image to a registry service of your choice, and deploy the image onto a Kubernetes cluster. Adopting these tools will free up your time and allow you to focus on writing code. You can learn more about the motivation behind this series in my [first post](intro.md). 
+I am exploring a series of tools to simplify the inner loop of the container native development workflow: the period of time during which you are writing code, but have not yet pushed it to a version control system. These tools, [**Draft**](draft.md), [**Skaffold**](skaffold.md), and [**Tilt**](tilt.md) each take a different approach to the task at hand.  Each tool can be used to build an image of your project, push the image to a registry service of your choice, and deploy the image onto a Kubernetes cluster. Adopting these tools will free up your time and allow you to focus on writing code. You can learn more about the motivation behind this series in my [first post](intro.md). 
 
 
 
 ### Definition 
 
-[Skaffold](https://github.com/GoogleContainerTools/skaffold) is a command line tool used for local continuous development of Kubernetes applications. Skaffold can be used to automate the workflow for building your application image, pushing that image to a repository, and deploy to a Kubernetes cluster. Skaffold can watch your code for changes with `skaffold dev` and then kick off the build, push, deploy process automatically when you save your code. 
+[Skaffold](https://github.com/GoogleContainerTools/skaffold) is a command line tool used for local continuous development of Kubernetes applications. Skaffold can be used to automate the workflow for building your application image, pushing it to a repository, and deploying it to a Kubernetes cluster. Skaffold can watch your code for changes with `skaffold dev` and then kick off the build, push, deploy process automatically when you save your code. 
 
 
 
 ### Differentiators
 
-Skaffold can be used to deploy multiple microservices at once. You can reference multiple images and manifest files in your `skaffold.yaml`. Skaffold is a very flexible option. For example, there are five options for something as straight forward as updating an image repository. You could manually replace the image repository in `skaffold.yaml`, or you could use a flag, environment variable, global skaffold configuration, or skaffold config for your current `kubectl` context. 
+Skaffold can be used to deploy multiple microservices at once. You can reference multiple images and manifest files in your `skaffold.yaml`. Skaffold is a very flexible option. For example, there are five options for something as straight forward as updating an image repository. You could manually replace the image repository in `skaffold.yaml`, or you can use a flag, environment variable, global skaffold configuration, or skaffold config for your current `kubectl` context. 
 
 Skaffold makes it easy to build, push, and deploy using a variety of tools by means of a **pluggable architecture** and also allows you to easily switch between these configurations with the **profiles** feature. Skaffold gives you options to use the tool you prefer in each stage of the build, push, deploy process. There are many build options (Dockerfile locally, Dockerfile in-cluster with Kaniko, Dockerfile on the cloud, Jib Maven/Gradle locally, etc.), deploy options (`kubectl`, Helm, Kustomize), and many optional image tag policies. This pluggability makes it possible to match the tools used in your production deployment pipeline. 
 
-The profiles feature makes the pluggable architecture of Skaffold even more useful. A profile is a set of settings stored in `skaffold.yaml` that overrides the build, test and deploy sections of your current configuration. Profiles enable you to efficiently switch tools as you see fit depending on your context. You can activate a configuration with `skaffold run -p [PROFILE]`. For example, you could create one profile called `local` development, which uses the local Docker daemon to build images and `kubectl` to deploy them to a local cluster. After you finalize your design, you could switch to the `production` profile using Jib with Maven for your build tool and `helm` to deploy to your cluster. 
+The profiles feature makes the pluggable architecture of Skaffold even more useful. A profile is a set of settings stored in `skaffold.yaml` that overrides the build, test and deploy sections of your current configuration. Profiles enable you to efficiently switch tools as you see fit depending on your context. You can activate a configuration with `skaffold run -p [PROFILE]`. For example, you can create one profile called `local` development, which uses the local Docker daemon to build images and `kubectl` to deploy them to a local cluster. After you finalize your design, you can switch to the `production` profile using Jib with Maven for your build tool and `helm` to deploy to your cluster. 
 
 
 
@@ -92,7 +92,7 @@ While `tilt up` is running, the build, push, and deploy application will reoccur
 
 #### Remove the Application 
 
-When you are finished testing the application, you can exit the UI by typing `Q` and remove thew application from your cluster with `tilt down`:
+When you are finished testing the application, you can exit the UI by typing `Q` and remove the application from your cluster with `tilt down`:
 
 ```
 $ tilt down
@@ -106,7 +106,7 @@ Deleting via kubectl: Deployment/oneup
 
 ### OKE/OCIR Configuration 
 
-Skaffold can also be used with hosted Kubernetes solutions. My example will use [Oracle Oracle Container Engine for Kubernetes (OKE)](https://docs.cloud.oracle.com/iaas/Content/ContEng/Concepts/contengoverview.htm) as the Kubernetes cluster and [Oracle Cloud Infrastructure Registry (OCIR)](https://docs.cloud.oracle.com/iaas/Content/Registry/Concepts/registryoverview.htm) as the container image registry. Similar steps can be followed to configure Skaffold with other Kubernetes cluster and registry services. 
+Skaffold can also be used with hosted Kubernetes solutions. My example will use [Oracle Container Engine for Kubernetes (OKE)](https://docs.cloud.oracle.com/iaas/Content/ContEng/Concepts/contengoverview.htm) as the Kubernetes cluster and [Oracle Cloud Infrastructure Registry (OCIR)](https://docs.cloud.oracle.com/iaas/Content/Registry/Concepts/registryoverview.htm) as the container image registry. Similar steps can be followed to configure Skaffold with other Kubernetes cluster and registry services. 
 
 #### Registry Configuration 
 
