@@ -1,6 +1,6 @@
 # Introduction 
 
-Traditional development workflows are relatively straight forward: 
+Traditional development workflows are relatively straightforward: 
 
 Step 1: Write code. 
 
