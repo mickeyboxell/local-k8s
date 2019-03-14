@@ -47,7 +47,7 @@ Verify your installation:
 
 `skaffold version`
 
-The installation will create a `/.skaffold` folder in your root directory to store configuration information.  
+The installation will create a `/.skaffold` folder in your home directory to store configuration information.  
 
 
 
