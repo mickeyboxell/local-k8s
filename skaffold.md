@@ -64,7 +64,7 @@ Dockerfile	README.adoc	k8s-pod.yaml	main.go		skaffold.yaml
 - skaffold.yaml specifies the workflow steps
 - K8s-pod.yaml is the Kubernetes manifest used to build the image created by the Dockerfile
 
-When using a local context you can bypass the image push step with the command `skaffold config set --global local-cluster true`. Note: If you are using the example application, make sure you are not currently logged into Docker hub. The registry URLs will conflict. 
+When using a local context you can bypass the image push step with the command `skaffold config set --global local-cluster true`. Note: If you are using the example application, make sure you are not currently logged into a Docker registry. The registry URL may conflict with the one specified in the Kubernetes manifest file. 
 
 Skaffold will use your current Kubernetes context to determine the cluster on which your application will be deployed. To find your context run: `kubectl config current-context`. 
 
