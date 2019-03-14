@@ -24,7 +24,7 @@ Draft differentiates itself by means of its low barrier to entry. The majority o
 
 Unlike Skaffold and Tilt, Draft does not continuously watch for application changes. You will need to run `draft up` every time you would like the application to be updated. At this time Draft only supports a single Dockerfile and chart in the root directory, which can make it a challenge to simultaneously deploy multiple microservices using Draft. Draft relies on Helm, a package management tool for Kubernetes. Helm is a common tool used to deploy artifacts to a Kubernetes cluster. This can be beneficial if it happens to be the same tool used to deploy to your production cluster. It would be nice to have the flexibility of Skaffold's pluggable architecture, which provides you with the option to deploy with other tools. Unlike using `kubectl`, Helm has to be installed separately and in many cases requires the configuration of RBAC. 
 
-It is worth noting that as of March 2019 the number of commits and stars for Draft is about half that of Skaffold and that there are far fewer recent commits for Draft than there are for Skaffold. 
+It is worth noting that as of March 2019 the number of commits and stars on GitHub for Draft is about half that of Skaffold and that there are far fewer recent commits for Draft than there are for Skaffold. 
 
 
 ### Requirements
