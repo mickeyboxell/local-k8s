@@ -69,9 +69,7 @@ Dockerfile	charts		draft.toml	glide.yaml	main.go
 
 After exploring the artifacts created by Draft, you have to the option to configure your image registry. Run `eval $(minikube docker-env)` to allow Draft to build images directly using Minikube's Docker daemon which lets you skip having to set up a remote/external container registry. If you do not configure an image registry, Draft will bypass this step: `WARNING: no registry has been set, therefore Draft will not push to a container registry.`
 
-*How can I configure this to be used with Docker for Desktop? It worked for me out of the box the second time around, but I'm sure I did something the first time to enable this. I have this in my notes: `docker run -d -p 5000:5000 --name registry registry:2` `draft config set registry localhost:5000`*
-
-After configuring your registry, it is time to deploy the appliction to your local Kubernetes cluster. Draft will use your current Kubernetes context to determine the cluster on which your application will be deployed. To find your context run: `kubectl config current-context`. 
+After configuring your registry, it is time to deploy the appliction to your local Kubernetes cluster. Draft will use your current Kubernetes context to determine the cluster on which your application will be deployed. To find your context run: `kubectl config current-context`. Note: you will need to login to a Docker registry with `docker login` even if you choose to bypass the image registry configuration step. 
 
 #### Deploy the Application 
 
