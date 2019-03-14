@@ -102,7 +102,7 @@ Deleting via kubectl: Deployment/oneup
 
 
 
-### OKE/OCIR Configuration 
+### Docker Registry and Hosted Kubernetes Configuration 
 
 #### Registry Configuration 
 
