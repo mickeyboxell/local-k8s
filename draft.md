@@ -68,7 +68,7 @@ Dockerfile	charts		draft.toml	glide.yaml	main.go
 - The Helm chart includes the manifest file used to deploy your application to a Kubernetes cluster. The `/charts` and `Dockerfile` assets created by Draft default to a basic Go configuration. 
 - The `draft.toml` file contains basic configuration details about the application: the name, repository, Kubernetes namespace, and whether to deploy the application automatically when local files change.
 
-After exploring the artifacts created by Draft, you have to the option to configure your image registry. Run `eval $(minikube docker-env)` to allow Draft to build images directly using Minikube's Docker daemon which lets you skip having to set up a remote/external container registry. If you choose to use Docker for Desktop you will need to login to a Docker registry with `docker login`. If you do not configure an image registry, Draft will bypass this step: `WARNING: no registry has been set, therefore Draft will not push to a container registry.`
+After exploring the artifacts created by Draft, you have to the option to configure your image registry. If you are using Minikube, run `eval $(minikube docker-env)` to allow Draft to build images directly using Minikube's Docker daemon which lets you skip having to set up a remote/external container registry. If you choose to use Docker for Desktop you will need to login to a Docker registry with `docker login`. If you do not configure an image registry, Draft will bypass this step: `WARNING: no registry has been set, therefore Draft will not push to a container registry.`
 
 After configuring your registry, it is time to deploy the appliction to your local Kubernetes cluster. Draft will use your current Kubernetes context to determine the cluster on which your application will be deployed. To find your context run: `kubectl config current-context`. 
 
@@ -86,7 +86,7 @@ example-go: Releasing Application: SUCCESS ⚓  (4.0052s)
 
 #### Verify Your Deployment
 
-Verify your application was properly deployed with `kubectl get pods`
+Verify your application was properly deployed with `kubectl get pods`:
 
 ```
 $ kubectl get pods
@@ -123,7 +123,7 @@ app 'example-go' deleted
 
 
 
-### OKE/OCIR Configuration 
+### Hosted Kubernetes and Docker Registry Configuration 
 
 Draft can also be used with hosted Kubernetes solutions. My example will use [Oracle Container Engine for Kubernetes (OKE)](https://docs.cloud.oracle.com/iaas/Content/ContEng/Concepts/contengoverview.htm) as the Kubernetes cluster and [Oracle Cloud Infrastructure Registry (OCIR)](https://docs.cloud.oracle.com/iaas/Content/Registry/Concepts/registryoverview.htm) as the container image registry. Similar steps can be followed to configure Draft with other Kubernetes cluster and registry services. 
 
