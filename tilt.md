@@ -67,6 +67,8 @@ When deploying to a local cluster, if there is no registry specified in your `ti
 
 Run `tilt up` to build and deploy the application. The Tilt UI will indicate a successful deployment with a green indicator and a deploy status of `running`. 
 
+![img](tilt-UI.png)
+
 #### Verify Your Deployment
 
 Tilt deployed the application in the `tilt-integration` namespace as specified in the Kubernetes manifest. Verify your application was properly deployed by switching to that namespace and running `kubectl get pods`
