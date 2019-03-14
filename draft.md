@@ -138,7 +138,7 @@ To use a cloud registry service you will need to set the registry in Draft with 
 - `<image-name>` is the name you want to give the image in Oracle Cloud Infrastructure Registry, for example, `helloworld`.
 - `<tag>` is an image tag you want to give the image in Oracle Cloud Infrastructure Registry, for example, `latest`.
 
-You will need to log into the registry locally with:
+You will need to log into the registry with:
 
 `docker login <region code>.ocir.io`
 
