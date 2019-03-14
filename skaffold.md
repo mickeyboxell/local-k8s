@@ -132,11 +132,7 @@ You may also be required to establish trust with the registry. For example, the 
 
 Because Skaffold uses your current Kubernetes context to determine the cluster on which your application will be deployed you will need remember to switch to your context to OKE. Verify your context with: `kubectl config current-context`. 
 
-Once the configuration is complete, run `skaffold dev` to build your application using the Dockerfile, push the application to OCIR, and deploy the application to OKE. As you did before locally, you can verify the successful deployment of the application by running `kubectl get pods`. 
-
-*Does Skaffold have the equivalent of the `draft connect` command?* 
-
-### 
+Once the configuration is complete, run `skaffold dev` to build your application using the Dockerfile, push the application to OCIR, and deploy the application to OKE. As you did before locally, you can verify the successful deployment of the application by running `kubectl get pods`. Skaffold will automatically port-forward any ports mentioned in the pod spec.
 
 ### References
 
