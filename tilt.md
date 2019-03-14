@@ -30,7 +30,7 @@ Tilt emphasizes deployment to local Kubernetes clusters rather than managed ones
 ### Requirements
 
 - Docker For Desktop
-- [Kubectl 1.7.4](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+- [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 - [Oracle Container Engine for Kubernetes (OKE)](https://docs.cloud.oracle.com/iaas/Content/ContEng/Concepts/contengoverview.htm)
 - [Oracle Cloud Infrastructure Registry (OCIR)](https://docs.cloud.oracle.com/iaas/Content/Registry/Concepts/registryoverview.htm)
 
