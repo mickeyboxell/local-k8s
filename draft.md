@@ -29,7 +29,7 @@ Unlike Skaffold and Tilt, Draft does not continuously watch for application chan
 ### Requirements
 
 - Docker For Desktop or [Minikube](https://github.com/Azure/draft/blob/master/docs/install-minikube.md)
-- [Kubectl 1.7.4](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+- [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 - [Oracle Container Engine for Kubernetes (OKE)](https://docs.cloud.oracle.com/iaas/Content/ContEng/Concepts/contengoverview.htm)
 - [Oracle Cloud Infrastructure Registry (OCIR)](https://docs.cloud.oracle.com/iaas/Content/Registry/Concepts/registryoverview.htm)
 - [Helm](https://github.com/kubernetes/helm#install) 
