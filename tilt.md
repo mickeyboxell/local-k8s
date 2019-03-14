@@ -68,8 +68,10 @@ When deploying to a local cluster, if there is no registry specified in your `ti
 Run `tilt up` to build and deploy the application. The Tilt UI will indicate a successful deployment with a green indicator and a deploy status of `running`. 
 
 ```
+
   RESOURCE NAME                                     DEPLOY •    BUILD STATUS •  UPDATED ▼ ● oneup ╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌ Running • OK       (1.8s) • <15s ago     HISTORY: FIRST BUILD                                     OK       (1.8s) • <15s ago     K8S POD: oneup-68d874d4b9-729jv                   http://localhost:8100/ • AGE <15s
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ────────────────────────────────── (l) maximize log ↑ ──────────────────────────────────  │ Applying via kubectl                                                               ↑                                                                                          │ Step 1 - 1.074s                                                                       │ Step 2 - 0.732s                                                                       │ Done in: 1.806s                                                                                                                                                             oneup       ┊ 2019/03/11 23:23:54 Serving oneup on container port 8000                   ✓ OK                                                                                                               Browse (↓ ↑), Expand (→) ┊ (enter) log, (b)rowser ┊ (q)uit
+
 ```
 
 #### Verify Your Deployment
@@ -127,8 +129,7 @@ Update the name and image under `spec` in your  `app.yaml` file:
 Update docker_build in your `tiltfile` with the registry URL:
 
 ```
-docker_build('
-        image: <region code>.ocir.io/<tenancy name>/<repo name>/<image name>', '.')
+docker_build('image: <region code>.ocir.io/<tenancy name>/<repo name>/<image name>', '.')
 ```
 
 You will also need to log into the registry locally with:
