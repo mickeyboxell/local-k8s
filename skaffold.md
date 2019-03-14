@@ -104,7 +104,7 @@ Deleting via kubectl: Deployment/oneup
 
 
 
-### OKE/OCIR Configuration 
+### Hosted Kubernetes and Docker Registry Configuration 
 
 Skaffold can also be used with hosted Kubernetes solutions. My example will use [Oracle Container Engine for Kubernetes (OKE)](https://docs.cloud.oracle.com/iaas/Content/ContEng/Concepts/contengoverview.htm) as the Kubernetes cluster and [Oracle Cloud Infrastructure Registry (OCIR)](https://docs.cloud.oracle.com/iaas/Content/Registry/Concepts/registryoverview.htm) as the container image registry. Similar steps can be followed to configure Skaffold with other Kubernetes cluster and registry services. 
 
@@ -119,7 +119,7 @@ In order to use a cloud registry service you will need to set the registry in Sk
 - `<image-name>` is the name you want to give the image in OCIR (for example, `helloworld`).
 - `<tag>` is an image tag you want to assign the image in OCIR (for example, `latest`).
 
-You will need to log into the registry locally with:
+You will need to log into the registry with:
 
 `docker login <region code>.ocir.io`
 
