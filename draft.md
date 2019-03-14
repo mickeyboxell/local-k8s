@@ -56,18 +56,16 @@ The installation will create a ` /.draft` folder in your home directory to store
 
 ### Local Configuration 
 
-Clone the [Draft repository](https://github.com/Azure/draft) on GitHub and change to the `/examples/example-go` directory. In order to deploy the `main.go` application to a Kubernetes cluster, we will need a Dockerfile, Helm chart, and draft.toml. 
-
-- The `Dockerfile` starts with a default Go image. It will install the dependencies in `requirements.txt` and copy the current directory into `/usr/src/app`. 
-- The Helm chart includes the manifest file used to deploy your application to a Kubernetes cluster. The `/charts` and `Dockerfile` assets created by Draft default to a basic Go configuration. 
-- The `draft.toml` file contains basic configuration details about the application: the name, repository, Kubernetes namespace, and whether to deploy the application automatically when local files change.
-
-These artifacts can easily be created by running `draft create`. Draft detects the language of the application in the directory, in this case Go:  `--> Draft detected Go (100.000000%)` and creates the scaffolding accordingly:
+Clone the [Draft repository](https://github.com/Azure/draft) on GitHub and change to the `/examples/example-go` directory. In order to deploy the `main.go` application to a Kubernetes cluster, we will need a Dockerfile, Helm chart, and draft.toml. These artifacts can easily be created by running `draft create`. Draft detects the language of the application in the directory, in this case Go:  `--> Draft detected Go (100.000000%)` and creates the scaffolding accordingly:
 
 ```
 $ ls 
 Dockerfile	charts		draft.toml	glide.yaml	main.go
 ```
+
+- The `Dockerfile` starts with a default Go image. It will install the dependencies in `requirements.txt` and copy the current directory into `/usr/src/app`. 
+- The Helm chart includes the manifest file used to deploy your application to a Kubernetes cluster. The `/charts` and `Dockerfile` assets created by Draft default to a basic Go configuration. 
+- The `draft.toml` file contains basic configuration details about the application: the name, repository, Kubernetes namespace, and whether to deploy the application automatically when local files change.
 
 After exploring the artifacts created by Draft, you have to the option to configure your image registry. Run `eval $(minikube docker-env)` to allow Draft to build images directly using Minikube's Docker daemon which lets you skip having to set up a remote/external container registry. If you do not configure an image registry, Draft will bypass this step: `WARNING: no registry has been set, therefore Draft will not push to a container registry.`
 
