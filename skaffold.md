@@ -64,7 +64,7 @@ Dockerfile	README.adoc	k8s-pod.yaml	main.go		skaffold.yaml
 - skaffold.yaml specifies the workflow steps
 - K8s-pod.yaml is the Kubernetes manifest used to build the image created by the Dockerfile
 
-When using a local context you can bypass the image push step with the command `skaffold config set --global local-cluster true`. 
+When using a local context you can bypass the image push step with the command `skaffold config set --global local-cluster true`. Note: If you are using the example application, make sure you are not currently logged into Docker hub. The registry URLs will conflict. 
 
 Skaffold will use your current Kubernetes context to determine the cluster on which your application will be deployed. To find your context run: `kubectl config current-context`. 
 
@@ -80,28 +80,25 @@ getting-started                          1/1     Running   0          5s
 
 #### Connect to the Application 
 
-Skaffold will automatically port forward an application based on the configuration of your pod spec. This will open your browser and connect to the "OneUp" application based on the port forward indicated in the `Tiltfile`. In this example the browser will open to `http://localhost:8100`.  
+Skaffold will automatically port forward the "getting-started" application based on the configuration of your pod spec. 
 
 #### Modify the Application 
 
-While `tilt up` is running, the build, push, and deploy application will reoccur every time a change is made to your code. 
+While `skaffold dev` is running, the build, push, and deploy application will reoccur every time a change is made to your code. 
 
 #### Application Logs
 
-`skaffold run --tail`
+To get logs from your deployed application run: `skaffold run --tail`
 
 #### Remove the Application 
 
-When you are finished testing the application, you can exit the UI by typing `Q` and remove the application from your cluster with `tilt down`:
+When you are finished testing the application, you can exit from `skaffold dev` which will remove the application from your cluster:
 
 ```
-$ tilt down
-Deleting via kubectl: Namespace/tilt-integration
-Deleting via kubectl: Deployment/oneup
+Cleaning up...
+pod "getting-started" deleted
+Cleanup complete in 2.317906684s
 ```
-
-
-
 
 
 ### Hosted Kubernetes and Docker Registry Configuration 
