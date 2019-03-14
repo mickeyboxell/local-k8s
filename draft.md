@@ -50,7 +50,7 @@ Verify your installation:
 
 To install default plugins and configure $DRAFT_HOME run `draft init`.
 
-The installation will create a ` /.draft` folder in your root directory to store configuration information.  
+The installation will create a ` /.draft` folder in your home directory to store configuration information.  
 
 
 
