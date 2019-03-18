@@ -149,7 +149,7 @@ You may also be required to establish trust with the registry. For example, the 
 
 #### Kubernetes Cluster Configuration 
 
-Because Draft uses your current Kubernetes context to determine the cluster on which your application will be deployed you will need remember to switch to your context to OKE. Verify your context with: `kubectl config current-context`. 
+Because Draft uses your current Kubernetes context to determine the cluster on which your application will be deployed you will need remember to switch your context to OKE. Verify your context with: `kubectl config current-context`. 
 
 As mentioned before, Draft deploys to Kubernetes by means of a Helm chart. If your cluster has RBAC enabled, you may need to create a new service account to grant Tiller, the in-cluster component of Helm, additional permissions to deploy to your cluster. For information about doing so, refer to the [Helm documentation](https://helm.sh/docs/using_helm/#role-based-access-control). 
 
